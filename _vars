@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # General System Variables
 export NAME="biosan"
@@ -7,7 +7,7 @@ export COMPUTER_NAME="biosanMBPr"
 export USER_MAIL="alessandro@biondi.me"
 export TIMEZONE="Europe/Rome"
 export DNS_SERVERS="127.0.0.1 1.1.1.1 192.168.1.1"    # Space separated IP address
-export DOTFILES_PATH="$HOME/.dotfiles"
+#export DOTFILES_PATH="$HOME/.dotfiles"
 export DOTFILES_REPO_SSH_URL="git@github.com:biosan/dotfiles.git"
 
 # Time Machine excluded paths (space separated)

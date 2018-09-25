@@ -1,52 +1,46 @@
 #!/usr/bin/env bash
 
+DOTFILES_PATH="$HOME/.dotfiles"
+
 printf 'Start configuring your Mac\n'
 
 echo 'WARNING: Make sure you have read the README and set your own settings'
      'inside the _vars file. This script could destroy your system.'
 printf '\n\"With great power comes great responsibilty\"\n'
-printf 'Do you want to continue the installation? [y/n]'
-START=read
-if $START != "y" && $START != "yes" ;then
-  printf "Bye\n"
-  exit
-fi
+echo "(press any key to continue, Ctrl-C to abort)"
 
 printf 'Importing your settings...\n'
-source ./_vars
+source "${DOTFILES_PATH}/_vars"
+
 
 printf 'Installing core stuff\n'
-brew bundle install --path="_macos/core/Brewfile"
+brew bundle install --file="${DOTFILES_PATH}/_macos/core/Brewfile"
 
 echo 'Stowing your dotfiles...'
-stow git
-stow gpg
-stow iterm
-stow karabiner
-stow neovim
-stow spectacle
-stow ssh
-stow zsh
-stow -t / dnscrypt-proxy
-stow neofetch
-stow rsync-backup
+stow  -d $DOTFILES_PATH git
+stow  -d $DOTFILES_PATH gpg
+stow  -d $DOTFILES_PATH iterm
+stow  -d $DOTFILES_PATH karabiner
+stow  -d $DOTFILES_PATH neovim
+stow  -d $DOTFILES_PATH spectacle
+stow  -d $DOTFILES_PATH ssh
+stow  -d $DOTFILES_PATH zsh
+stow  -d $DOTFILES_PATH -t / dnscrypt-proxy
+stow  -d $DOTFILES_PATH neofetch
+stow  -d $DOTFILES_PATH rsync-backup
 echo 'Stowing done!'
 
 printf 'Configure system and stuff\n'
-./_macos/config
+${DOTFILES_PATH}/_macos/config
 
 echo 'Changing dotfiles repository remote URL from https to ssh'
-cd .dotfiles || exit
+cd $DOTFILES_PATH
 git remote set-url origin "$DOTFILES_REPO_SSH_URL"
 
-echo 'Do you want to install all the extra app you would like? [y/n]'
+echo 'Installing all the extra apps'
 echo '(This include XCode and a lot of GBs of other stuff)'
-INSTALL_EXTRA=read
-if $INSTALL_EXTRA [/[[ "y" || $INSTALL_EXTRA [/[[ "yes" ;then
-    echo "Good!"
-    echo "Installing extra stuff, this will require A LOT OF TIME"
-    brew bundle install --path="_macos/extra/Brewfile"
-fi
+echo "(press any key to continue, Ctrl-C to abort)"
+brew bundle install --file="${DOTFILES_PATH}/_macos/extra/Brewfile"
 
 printf '\nAll done. Your Mac is ready to ROCK\n'
 echo '...please restart your Mac now to apply all the changes and settings...'
