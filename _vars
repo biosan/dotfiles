@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+# General System Variables
+export NAME="biosan"
+export REAL_NAME="Alessandro Biondi"
+export COMPUTER_NAME="biosanMBPr"
+export USER_MAIL="alessandro@biondi.me"
+export TIMEZONE="Europe/Rome"
+export DNS_SERVERS="127.0.0.1 1.1.1.1 192.168.1.1"    # Space separated IP address
+export DOTFILES_PATH="$HOME/.dotfiles"
+export DOTFILES_REPO_SSH_URL="git@github.com:biosan/dotfiles.git"
+
+# Time Machine excluded paths (space separated)
+export TM_EXCLUDED="$HOME"
+
+# Setec
+export GPG_KEY_FINGERPRINT="A1E1E639E47467DBD89CA0678632E1D006B8EFB1"
+export PASS_GIT_URL="git@gitlab.com:biosan/pass.git"
+
+# Apps
+export ITERM_PREF_FOLDER="$HOME/.iterm"
+export ALFRED_PREF_FOLDER="$HOME/.alfred"

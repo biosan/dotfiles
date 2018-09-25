@@ -1,0 +1,112 @@
+########
+# TAPS #
+########
+tap "caskroom/cask"
+tap "caskroom/fonts"
+
+
+###############################################
+### All the things I could not live whitout ###
+###############################################
+
+### Required for other stuff
+brew "stow"
+
+### GUI Utilities
+cask "omnifocus"
+cask "firefox"
+cask "karabiner-elements"
+cask "dropbox"
+mas  "Reeder", id: 880001334
+mas  "Amphetamine", id:937984704
+cask "alfred"
+cask "flux"
+cask "calibre"
+cask "openemu"
+cask "vlc"
+cask "setapp"
+cask "spectacle"
+cask "keka"
+
+### Programming
+brew "python"
+brew "python3"
+brew "ruby"
+brew "node"
+brew "git"
+brew "git-lfs"
+
+### Editors
+brew "vim"
+brew "neovim"
+cask "vimr"
+brew "jrnl"
+cask "visual-studio-code"
+cask "standard-notes"
+
+### Writing & Co.
+brew "pandoc"
+tap  "valelint/vale"
+brew "valelint/vale/vale"
+
+
+### Terminal & Co.
+brew "iterm2-nightly"
+brew "zsh"
+brew "zplug"
+brew "fish"
+brew "bash"
+brew "mosh"
+brew "tmux"
+
+### CLI Utilities
+brew "htop"
+brew "p7zip"
+brew "coreutils"
+brew "osxutils"
+brew "grep"
+brew "pv"
+brew "findutils"
+brew "binutils"
+brew "diffutils"
+brew "gnu-tar"
+brew "gnu-sed"
+brew "gawk"
+brew "gnu-indent"
+brew "gnu-getopt"
+brew "zbar"
+brew "neofetch"
+
+### Security
+cask "osxfuse" # Required by encfs
+brew "gnupg2"
+brew "gnupg"
+#brew "gpg-agent"
+#brew "gnupg-pcks11-scd"
+#brew "pcsc-lite"
+#brew "opensc"
+brew "openssh"
+brew "openssl"
+brew "paperkey"
+brew "pass"
+brew "pinentry-mac"
+brew "encfs"
+brew "ssss"
+brew "keybase"
+cask "keybase"
+brew "ykneomgr"
+brew "ykpers"
+brew "yubico-piv-tool"
+cask "macpass"
+#cask "gpgtools"
+
+### Network
+brew "nmap"
+brew "netcat"
+brew "curl"
+brew "rsync"
+brew "wget"
+brew "aria2"
+brew "youtube-dl"
+brew "openvpn"
+brew "dnscrypt-proxy"

@@ -1,0 +1,351 @@
+#!/usr/bin/env sh
+
+#######################################
+## This is a configuration script.   ##
+## Please make attention it can mess ##
+## your OS X installion              ##
+#######################################
+
+
+############### System settings ###############
+
+echo "Configuring macOS settings, built-in app, CLI tools, and other Apps"
+echo "(press any key to continue, Ctrl-C to abort)"
+read TEMP
+
+#############
+## Generic ##
+#############
+
+# Set hostname
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+sudo scutil --set HostName "$COMPUTER_NAME"
+sudo scutil --set LocalHostName "$COMPUTER_NAME"
+
+# Disable boot sound effects
+sudo nvram SystemAudioVolume=" "
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+## Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# Top left screen corner: Show application windows
+defaults write com.apple.dock wvous-tl-corner -int 3
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner: Mission Control
+defaults write com.apple.dock wvous-tr-corner -int 2
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom left screen corner: Put display to sleep
+defaults write com.apple.dock wvous-bl-corner -int 10
+defaults write com.apple.dock wvous-bl-modifier -int 0
+# Bottom right screen corner: start screen saver
+defaults write com.apple.dock wvous-br-corner -int 12
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+
+
+# Disable automatic termination of inactive apps
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+# Set language and text formats
+# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
+defaults write NSGlobalDomain AppleLanguages -array "en" "it"
+defaults write NSGlobalDomain AppleLocale -string "it_IT@currency=EUR"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+sudo systemsetup -settimezone "$TIMEZONE" > /dev/null
+
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+
+### Network ###
+# Turn Firewall on
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+# Set DNS servers to use on Wi-Fi
+networksetup -setdnsservers Wi-Fi "$DNS_SERVERS"
+
+
+##############
+## Menu Bar ##
+##############
+
+# Show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -bool true
+
+# Show full clock
+defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM  HH:mm:ss'
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+
+# MenuBar items
+defaults write com.apple.menuextra.textinput ModeNameVisible -bool false
+
+
+############
+## Finder ##
+############
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSavePrint -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSavePrint2 -bool true
+
+# Hide icons for internal drives but show servers, removable media and ext. HDDs on the desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Set home folder as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/` (for desktop use PfDe)
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Enable snap-to-grid for icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+
+
+##########
+## Dock ##
+##########
+
+# Hide the Dock
+defaults write com.apple.dock autohide -bool true
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
+
+# Set the icon size of Dock items to 42 pixels
+defaults write com.apple.dock tilesize -int 42
+
+# Change minimize/maximize window effect
+defaults write com.apple.dock mineffect -string "scale"
+
+# Change dock position to left
+defaults write com.apple.dock orientation -string "left"
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+
+###################
+## Built-in Apps ##
+###################
+
+### Mail.app ###
+# Copy email addresses as 'foo@example.com' instead of 'Foo Bar <foo@example.com>'
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+### Activity Monitor ###
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+### Safari ###
+# Privacy: don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+### Calculator ###
+# Set scientific mode as default (only for real bad ass)
+defaults write com.apple.calculator ViewDefaultsKey "Scientific"
+
+
+#############
+# CLI Tools #
+#############
+
+### ZSH
+    ZSH_PATH='/usr/local/bin/zsh'
+    # Add zsh to the list of the shells
+    if grep -q -v "^$ZSH_PATH$" /etc/shells; then sudo sh -c 'echo '$ZSH_PATH' >> /etc/shells'; fi
+    # Set zsh as default shell
+    #sudo chsh -s /usr/local/bin/zsh "$USER" &> /dev/null
+
+
+### Fish
+    curl -L https://get.oh-my.fish | fish
+    omf install cbjohnson
+    # Set fish as default shell
+    sudo chsh -s /usr/local/bin/fish "$USER" &> /dev/null
+
+
+### Git
+    git config --global user.name "$REAL_NAME"
+    git config --global user.email "$USER_MAIL"
+    git config --global user.signingkey "$GPG_KEY_FINGERPRINT"
+    git config --global github.user "$NAME"
+    git config --global core.excludesfile "$HOME/.gitignore_global"
+    git config --global push.default simple
+    git config --global diff.tool vimdiff
+    git config --global merge.tool vimdiff
+    git config --global alias.go checkout
+    git config --global alias.d difftool
+
+### GPG
+    # Import my GPG public key
+    gpg2 --recv-keys "$GPG_KEY_FINGERPRINT"
+    # Import my GPG key stubs from the smartcard
+    echo "Importing private key stubs from the smartcard"
+    echo "Insert the smartcard. Press any key to continue... (Ctrl-C to cancel)"
+    read TMP
+    gpg2 --card-status
+    # Set your key as ultemately trusted
+    gpg2 --import-ownertrust <(echo "$GPG_KEY_FINGERPRINT:6:")
+
+### SSH
+
+### Pass
+    # Clone my password store repository
+    echo "Setting up your password store repository"
+    if [ -d ~/.password-store ]; then
+        echo "A .password-store folder is already inside your home directory"
+    else
+        echo "Cloning repository using SSH"
+        echo "Insert the smartcard. Press any key to continue... (Ctrl-C to cancel)"
+        read TMP
+        git clone "$PASS_GIT_URL" ~/.password-store
+    fi
+
+### Homebrew
+    # Setting my Homebrew GitHub token
+    if [ ! -f ~/.brewghtoken ]; then
+        echo "export HOMEBREW_GITHUB_API_TOKEN=$(pass dev/brewghtoken | head -1)" > ~/.brewghtoken
+        chmod 600 ~/.brewghtoken
+    else
+        echo "You already have a .brewghtoken file inside your home folder"
+            "please check if it's right, if not, delete it and run this script again\n"
+    fi
+
+### DNSCrypt-Proxy 2
+    dnscrpyt-proxy -service install
+    dnscrpyt-proxy -service start
+
+
+### Vim/Neovim
+nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+
+
+########
+# Apps #
+########
+
+### iTerm
+    # Setup Preferences Folder
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$ITERM_PREF_FOLDER"
+
+### Karabiner/Karabiner-Elements
+    # Restart Karabiner-Elements to load new configuration file
+        echo "You already have a .brewghtoken file inside your home folder"
+            "please check if it's right, if not, delete it and run this script again\n"
+    fi
+
+### DNSCrypt-Proxy 2
+    dnscrpyt-proxy -service install
+    dnscrpyt-proxy -service start
+
+
+### Vim/Neovim
+nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+
+########
+# Apps #
+########
+
+### iTerm
+    # Setup Preferences Folder
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$ITERM_PREF_FOLDER"
+
+### Karabiner/Karabiner-Elements
+    # Restart Karabiner-Elements to load new configuration file
+    launchctl kickstart -k "gui/$(id -u)/org.pqrs.karabiner.karabiner_console_user_server"
+
+### Dropbox
+    # Link notes stored in Dropbox to my home folder
+    ln -sf ~/Dropbox/Notes ~/Notes
+    ln -sf ~/Dropbox/Uni ~/Uni
+
+### Alfred2
+    # Set Alfred sync folder
+    defaults write com.runningwithcrayons.Alfred-Preferences syncfolder -string "$ALFRED_PREF_FOLDER"
+
+### f.lux
+    # Like Batman I work at nighttime, so let f.lux know
+    defaults write org.herf.Flux sleepLate 1
+    # Set color temperatures
+    defaults write org.herf.Flux lateColorTemp 3400
+    defaults write org.herf.Flux nightColorTemp 4200
+    # Set location
+    defaults write org.herf.Flux location "41.9,12.5"
+    defaults write org.herf.Flux locationTextField Rome
+    defaults write org.herf.Flux locationType L
+    # Set wake time at 8:00 (480 minutes)
+    defaults write org.herf.Flux wakeTime 480
+    # Dim transition when switching off
+    defaults write org.herf.Flux melanopicDisable 1
+    # Dark theme after sunset
+    defaults write org.herf.Flux darkTheme 1
+
+
+### THE END ###
+echo "Kill (or restart) affected applications"
+for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+echo "Configuration finished"

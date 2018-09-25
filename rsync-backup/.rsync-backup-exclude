@@ -1,0 +1,15 @@
+.bundle
+.cache
+.dotfiles
+.dropbox
+.electron
+.emacs.d
+.fzf
+.gem
+.gradle
+.local/share/heroku/client
+.npm
+.rustup
+.stack
+.vagrant.d
+.vscode

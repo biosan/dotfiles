@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/biosan/.zsh'
+let g:netrw_dirhist_2='/Users/biosan/.dotfiles2'
+let g:netrw_dirhist_3='/Users/biosan/Desktop/KeyCappie'
+let g:netrw_dirhist_4='/Users/biosan/Development/Appunti-DB'
+let g:netrw_dirhist_5='/Users/biosan/Development/Appunti-DB/db_api'
+let g:netrw_dirhist_6='/Users/biosan'
+let g:netrw_dirhist_7='/Users/biosan/.IdentityService'
+let g:netrw_dirhist_8='/Users/biosan'
+let g:netrw_dirhist_9='/Users/biosan/Notes'
