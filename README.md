@@ -11,7 +11,7 @@ All the stuff that you will find inside is pretty standard for developers and fo
 Run this command:
 
 ```
-curl https://github.com/biosan/dotfiles/master/_bootstrap | bash
+curl https://raw.githubusercontent.com/biosan/dotfiles/master/_bootstrap | bash
 ```
 
 It will install XCode Command Line Tools, [Homebrew](https://homebrew.sh), [mas](https://github.com/mas-cli/mas), and then clone this repository into `~/.dotfiles`
