@@ -23,6 +23,7 @@ sudo pmset -a standbydelay 7200
 # Change ibernation mode.
 sudo pmset -a hibernatemode 25
 #sudo pmset -a hibernatemode 3
+sudo pmset -a autopoweroff 0
 
 # Install XCode
 if [[ $(/usr/bin/gcc 2>&1) =~ "no developer tools were found" ]] || [[ ! -x /usr/bin/gcc ]]; then

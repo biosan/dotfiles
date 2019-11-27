@@ -4,5 +4,7 @@
 <dict>
 	<key>currentthemeuid</key>
 	<string>theme.custom.3B9B7FCC-6B3E-4630-BC21-E2EEB4FA95BF</string>
+	<key>lightthemeuid</key>
+	<string>theme.bundled.frostyteal</string>
 </dict>
 </plist>

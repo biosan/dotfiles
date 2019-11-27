@@ -17,8 +17,8 @@ cask "omnifocus"
 cask "firefox"
 cask "karabiner-elements"
 cask "dropbox"
-mas  "Reeder", id: 880001334
-mas  "Amphetamine", id:937984704
+#mas  "Reeder", id: 880001334
+#mas  "Amphetamine", id:937984704
 cask "alfred"
 cask "flux"
 cask "calibre"
@@ -51,7 +51,7 @@ brew "valelint/vale/vale"
 
 
 ### Terminal & Co.
-brew "iterm2-nightly"
+cask "iterm2"
 brew "zsh"
 brew "zplug"
 brew "fish"
@@ -92,7 +92,6 @@ brew "pass"
 brew "pinentry-mac"
 brew "encfs"
 brew "ssss"
-brew "keybase"
 cask "keybase"
 brew "ykneomgr"
 brew "ykpers"

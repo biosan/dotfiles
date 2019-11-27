@@ -4,7 +4,7 @@
 
 ### Utilities
 cask "transmission"
-mas  "Mactracker", id: 430255202
+#mas  "Mactracker", id: 430255202
 cask "android-platform-tools"
 brew "mobiledevice"
 
@@ -55,7 +55,6 @@ brew "the_silver_searcher"
 ### Network
 brew "netcat6"
 brew "ntopng"
-brew "rtorrent" #(needs gcc)
 brew "ipfs"
 brew "iperf3"
 brew "iperf"
@@ -82,10 +81,10 @@ brew "gpgme"
 # DEV #
 #######
 
-mas  "XCode", id: 497799835
+#mas  "XCode", id: 497799835
 
 ### Design
-mas  "Affinity Designer", id: 824171161
+#mas  "Affinity Designer", id: 824171161
 
 ### Virtualization
 cask "virtualbox"
@@ -148,7 +147,7 @@ cask "gog-galaxy"
 #########
 # MEDIA #
 #########
-mas  "iMovie", id:408981434
+#mas  "iMovie", id:408981434
 brew "ffmpeg"
 brew "graphicsmagick"
 brew "webp"

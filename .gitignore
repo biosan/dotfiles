@@ -1,39 +1,15 @@
-.bak
+# Simple trick to exclude everything while allowing
+# to include files from nested folders
+*
+!*/
 
-### OS generated files
-.DS_Store
-.DS_Store?
-._*
-ehthumbs.db
-Thumbs.db
-.AppleDouble
-.LSOverride
+# Alfred
 
-## Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
+# Git
 
-## Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# GPG
+!gpg/.gnupg/gpg.conf
+!gpg/.gnupg/gpg-agent.conf
 
-
-### Vim
-*.swp
-
-### ZSH
-zsh/.zsh/plugins
-
-### Alfred
-alfred/.alfred/Alfred.alfredpreferences/clipboard
-alfred/.alfred/Alfred.alfredpreferences/remote
-
-### OSX configuration
-osx/config
+# Vim/Neovim
+vim/plugged

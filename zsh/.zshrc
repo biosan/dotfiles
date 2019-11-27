@@ -104,3 +104,6 @@ PATH=${PATH}:/usr/libexec
 export PATH=${PATH}
 # Set MANPATH
 export MANPATH="/usr/local/man:$MANPATH"
+
+# added by travis gem
+[ -f /Users/biosan/.travis/travis.sh ] && source /Users/biosan/.travis/travis.sh

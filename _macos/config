@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
+
+source ${HOME}/.dotfiles/_vars
 
 #######################################
 ## This is a configuration script.   ##
@@ -242,14 +244,15 @@ defaults write com.apple.calculator ViewDefaultsKey "Scientific"
 
 ### GPG
     # Import my GPG public key
-    gpg2 --recv-keys "$GPG_KEY_FINGERPRINT"
+    gpg --recv-keys "$GPG_KEY_FINGERPRINT"
     # Import my GPG key stubs from the smartcard
     echo "Importing private key stubs from the smartcard"
     echo "Insert the smartcard. Press any key to continue... (Ctrl-C to cancel)"
     read TMP
-    gpg2 --card-status
+    gpg --card-status
     # Set your key as ultemately trusted
-    gpg2 --import-ownertrust <(echo "$GPG_KEY_FINGERPRINT:6:")
+    #gpg --import-ownertrust <(echo "$GPG_KEY_FINGERPRINT:6:")
+    export SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh
 
 ### SSH
 
@@ -276,35 +279,14 @@ defaults write com.apple.calculator ViewDefaultsKey "Scientific"
     fi
 
 ### DNSCrypt-Proxy 2
-    dnscrpyt-proxy -service install
-    dnscrpyt-proxy -service start
+    dnscrypt-proxy -service install
+    dnscrypt-proxy -service start
 
 
 ### Vim/Neovim
-nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+#nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 
 
-########
-# Apps #
-########
-
-### iTerm
-    # Setup Preferences Folder
-    defaults write com.googlecode.iterm2 PrefsCustomFolder "$ITERM_PREF_FOLDER"
-
-### Karabiner/Karabiner-Elements
-    # Restart Karabiner-Elements to load new configuration file
-        echo "You already have a .brewghtoken file inside your home folder"
-            "please check if it's right, if not, delete it and run this script again\n"
-    fi
-
-### DNSCrypt-Proxy 2
-    dnscrpyt-proxy -service install
-    dnscrpyt-proxy -service start
-
-
-### Vim/Neovim
-nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 
 ########
 # Apps #

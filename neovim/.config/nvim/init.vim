@@ -1,332 +1,234 @@
-" ===== VIM-PLUG =====
+" My NeoVim config
 
-" Install vim-plug and all the plugins when its not installed
-" (https://github.com/junegunn/vim-plug/wiki/faq)
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs
+" Install vim-plug automatically
+" (https://github.com/junegunn/vim-plug/wiki/tips)
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.dotfiles/neovim/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" ========= PLUG =========
-call plug#begin('~/.dotfiles/vim/plugged')
+""" Set shell
+set shell=/bin/sh
+
+" Plugins
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'w0rp/ale'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
-Plug 'mhinz/vim-startify'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 
-" --- Coding ---
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-" Python
-Plug 'nvie/vim-flake8'
-Plug 'fs111/pydoc.vim'
-Plug 'zchee/deoplete-jedi'
-" C & Co.
-Plug 'zchee/deoplete-clang'
-" Swift
-Plug 'landaire/deoplete-swift'
-" CSS
-Plug 'ap/vim-css-color'
-" Rails
-Plug 'tpope/vim-rails'
-
-" --- Prose ---
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'reedes/vim-pencil'
-"Plug 'reedes/vim-lexical'
-" Markdown
-"Plug 'nelstrom/vim-markdown-folding'
-"Plug 'vim-pandoc/vim-pandoc'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
-"Plug 'tpope/vim-liquid'
-"Plug 'dhruvasagar/vim-table-mode'
-"Plug 'tpope/vim-markdown'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-" LaTeX
-"Plug 'poppyschmo/deoplete-latex'
-"Plug 'lervag/vimtex'
-
-" --- macOS Specific ---
-Plug 'sjl/vitality.vim'
-Plug 'jonhiggs/MacDict.vim'
-
-" --- Appearance ---
-Plug 'reedes/vim-thematic'
-" --- Colorschemes ---
-Plug 'romainl/Apprentice'
-Plug 'altercation/vim-colors-solarized'
-Plug 'gilgigilgil/anderson.vim'
-Plug 'reedes/vim-colors-pencil'
-Plug 'nelstrom/vim-mac-classic-theme'
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'morhetz/gruvbox'
-Plug 'whatyouhide/vim-gotham'
-Plug 'ewilazarus/preto'
-Plug 'chriskempson/base16-vim'
-Plug 'baeuml/summerfruit256.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'trusktr/seti.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'reedes/vim-colors-pencil'
-Plug 'arcticicestudio/nord-vim'
-Plug 'connorholyday/vim-snazzy'
-Plug 'jacoborus/tender.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'logico-dev/typewriter'
-Plug 'nathanlong/vim-colors-writer'
-Plug 'YorickPeterse/happy_hacking.vim'
-Plug 'rakr/vim-one'
-Plug 'owickstrom/vim-colors-paramount'
+" Colorschemes
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'fenetikm/falcon'
-Plug 'mhartington/oceanic-next'
+Plug 'jacoborus/tender.vim'
+Plug 'chriskempson/base16-vim'
 
-
-" --- Plugs to call last ---
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plugs to call last
+Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
-" ---------------
+
+" CoC Plugins
+let g:coc_global_extensions = [
+    \ 'coc-word',
+    \ 'coc-emoji',
+    \ 'coc-highlight',
+    \ 'coc-dictionary',
+    \ 'coc-lists',
+    \ 'coc-json',
+    \ 'coc-pairs',
+    \ 'coc-python',
+    \ 'coc-solargraph',
+    \ 'coc-stylelint',
+    \ 'coc-css',
+    \ 'coc-tsserver'
+    \ ]
 
 
-" ========= Mappings =========
-" Movement
-map j gj
-map k gk
-
+set mouse+=a
+set ignorecase
+set smartcase
 
 " ========= Swap, Backup & Undo directories =========
 set swapfile
 set backup
 set writebackup
 set undofile
-set backupdir=$HOME/.vim/backups
-set directory=$HOME/.vim/swaps
-set undodir=$HOME/.vim/undos
+set backupdir=$HOME/.config/nvim/backups
+set directory=$HOME/.config/nvim/swaps
+set undodir=$HOME/.config/nvim/undos
 
-" ========= Search settings =========
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-nnoremap <silent> <Leader>/ :nohlsearch<CR>  " Switch off current search highlight
+" colorscheme palenight
+colorscheme tender
+" Non-printable character
+" Good UTF-8 chars: ↩ ⠿↯■⌻†‖‡⍀⌇∲⊙∫
+set listchars=tab:‣\ ,trail:∬,extends:⇉,precedes:⇇
+set list
 
+set showbreak=↪\    " Show wrapped lines
 
-" ========= Autocommands =========
-" --- PGP/GPG files ---
-" Make sure nothing will be written on disk
-autocmd BufReadPre,FileReadPre *.{gpg,asc,pgp} setlocal viminfo=
-autocmd BufReadPre,FileReadPre *.{gpg,asc,pgp} setlocal noswapfile noundofile nobackup
-" --- Pass ---
-" Make sure nothing will be written on disk
-autocmd BufReadPre,FileReadPre /private/* setlocal viminfo=
-autocmd BufReadPre,FileReadPre /private/* setlocal noswapfile noundofile nobackup
+set number          " Lines numbers
+set relativenumber  " Lines numbers relative to cursor
 
-" ========= iTerm and system integration =========
-" Enable mouse in any mode
-set mouse+=a
-
-" ========= Language and spell checking =========
-" Set Vim language
-language en_US.UTF-8
-" Set spell checking languages (English & Italian)
-set spelllang=en ",it
-
-" ========= Appearance =========
-" Enable True Color (24-bit) when in NeoVim
-colorscheme base16-oceanicnext
-set background=dark
-set termguicolors
-let ayucolor="light"
-set showtabline=1
-"let g:guifont=FuraCodeNerdComplete-Retina:h14
+set cursorcolumn    " Show cursor column
+set cursorline      " Show cursor line
+" Text folding
+set foldmethod=indent
+set foldlevel=12
+" --- Indentation settings ---
+set tabstop=4    " (ts) width (in spaces) that a <tab> is displayed as
+set expandtab    " (et) expand tabs to spaces (use :retab to redo entire file)
+set shiftwidth=4 " (sw) width (in spaces) used in each step of autoindent (or << and >>)
 
 
-" ========= Plugins =========
-" Vim-Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-" LanguageClient
-set hidden
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-" Indent guide lines
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-" PyDoc
-autocmd CursorMovedI * if pumvisible() == 0 | pclose | endif  " Automatically close the PyDoc buffer when
-autocmd InsertLeave * if pumvisible() == 0 | pclose| endif    " leaving insert mode or moving the cursor
-" Limelight
-let g:limelight_conceal_ctermfg = 'gray'   " Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 240
-let g:limelight_conceal_guifg = 'DarkGray' " Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = '#777777'
-let g:limelight_default_coefficient = 0.5  " Dim coefficient
-let g:limelight_paragraph_span = 0         " Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_priority = -1              " Highlighting priority (default: 10). Set it to -1 not to overrule hlsearch
-" Vim-Pencil
-let g:pencil#wrapModeDefault = 'soft'  " Set soft wrap mode as default
-" Pandoc
-let g:pandoc#formatting#equalprg = 'pandoc -t markdown_mmd --no-wrap --atx-headers'
-let g:pandoc#syntax#codeblocks#embeds#langs = ["python", "c", "ruby", "cpp","bash=sh"]  " Enable syntax highlighting in markdown's fenced codeblocks for the listed languages
-" Plastiboy/Mardown
-let g:vim_markdown_follow_anchor = 1
-let g:vim_markdown_math = 1
-let g:vim_markdown_no_extensions_in_markdown = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-" Goyo
-let g:goyo_width = "120"
-let g:goyo_height = "80%"
-let g:goyo_liner = "0"
-" MacDict
-map <C-d> "dyiw:call MacDict(@d)<CR>  " Search the word under cursor
-
-
-
-""""""""""""""""""""""
-""""  CODE SETUP  """"
-""""""""""""""""""""""
-func! Code()
-
-    " Colorscheme
-    colorscheme base16-oceanicnext
-    set background=dark
-    " Non-printable character
-    " Good UTF-8 chars: ↩ ⠿↯■⌻†‖‡⍀⌇∲⊙∫
-    set listchars=tab:‣\ ,trail:∬,extends:⇉,precedes:⇇
-    set list
-    " Show wrapped lines
-    set showbreak=↪\ 
-    " Lines numbers
-    set number
-    set relativenumber
-    " Show cursor column and line
-    set cursorcolumn
-    set cursorline
-    " Text folding
-    set foldmethod=indent
-    set foldlevel=99
-    " --- Indentation settings ---
-    set tabstop=4    " (ts) width (in spaces) that a <tab> is displayed as
-    set expandtab    " (et) expand tabs to spaces (use :retab to redo entire file)
-    set shiftwidth=4 " (sw) width (in spaces) used in each step of autoindent (or << and >>)
-    " --- Plugins ---
-    NoPencil
-    GitGutterEnable
-
-endfu
-
-
-
-"""""""""""""""""""""""
-""""  PROSE SETUP  """"
-"""""""""""""""""""""""
-func! Prose()
-
-    " Colorscheme
-    colorscheme PaperColor
-    AirlineTheme pencil
-    set background=light
-    " Non-printable character
-    " Good UTF-8 chars: ⠿↯■⌻†‖‡⍀⌇∲⊙∫
-    set listchars=tab:‣\ ,trail:∬,extends:⇉,precedes:⇇
-    set list
-    " Show wrapped lines
-    set showbreak=↪\ 
-    " Lines numbers
-    set nonumber
-    set norelativenumber
-    " Show cursor column and line
-    set nocursorcolumn
-    set cursorline
-    " Text folding
-    set foldmethod=indent
-    set foldlevel=99
-    " Spellcheck
-    set spelllang=
-    " --- Indentation settings ---
-    set tabstop=4    " (ts) width (in spaces) that a <tab> is displayed as
-    set expandtab    " (et) expand tabs to spaces (use :retab to redo entire file)
-    set shiftwidth=4 " (sw) width (in spaces) used in each step of autoindent (or << and >>)
-
-    " --- Plugins ---
-    Pencil
-    GitGutterDisable
-    let g:ale_linters={'text':['proselint', 'vale']}
-    AirlineTheme pencil
-    " Pandoc
-    set foldcolumn=8
-    let g:pandoc#folding#fdc = 8
-
-endfu
-
-
-""""""""""""""""""""
-"""" FOCUS MODE """"
-""""""""""""""""""""
-func! Focus()
-
-    Limelight!!
-    Goyo
-
-endfu
-
-com! Prose call Prose()
-com! Code call Code()
-com! Focus call Focus()
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ProseOrCode = 1
-
-func! ChooseProseOrCode()
-    if g:ProseOrCode
-        call Code()
-    else
-        call Prose()
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'cocstatus', 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+"       \   'right':[ [ ''  ]]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'fugitive#head',
+"       \   'cocstatus': 'coc#status'
+"       \ },
+"       \ }
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'cocstatus', 'branch', 'readonly', 'relativepath', 'modified' ] ]
+\ },
+\ 'component': {
+\   'lineinfo': ' %3l:%-2v',
+\ },
+\ 'component_function': {
+\   'readonly': 'LightlineReadonly',
+\   'branch': 'LightlineFugitive'
+\ },
+\ 'separator': { 'left': '', 'right': '' },
+\ 'subseparator': { 'left': '', 'right': '' }
+\ }
+function! LightlineReadonly()
+    return &readonly ? '' : ''
+endfunction
+function! LightlineFugitive()
+    if exists('*fugitive#head')
+        let branch = fugitive#head()
+        return branch !=# '' ? ' '.branch : ''
     endif
-endfu
+    return ''
+endfunction
 
-augroup SetProse
-    autocmd FileType text,markdown,mkd,md,tex,latex let g:ProseOrCode=0
-augroup END
 
-autocmd BufNewFile,BufRead * call ChooseProseOrCode()
+" CoC config
+" Better display for messages
+set cmdheight=2
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <C-c> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` for format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` for fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+""" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
