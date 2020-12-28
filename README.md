@@ -1,72 +1,78 @@
-# Dotfiles
 
-This is my dotfiles repo.
-All the stuff that you will find inside is pretty standard for developers and for every *NIX command line enthusiast.
+# One config to rule them all 💍👨‍💻🔥
+
+This repo contains my dotfiles, all the config files, scripts, and instructions to setup a new machine.
+
+Most of the settings and programs are managed with [home-manager](https://github.com/nix-community/home-manager).
+
+[Nix](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager) makes everything stable and easy to reproduce.
+
+> **macOS**
+>
+> My daily machine is a Mac, and this requires some special attention to some settings that could not be managed with Nix and home-manager directly.
 
 
 ## Installation
 
-### Step 1
-
-Run this command:
-
-```
-curl https://raw.githubusercontent.com/biosan/dotfiles/master/_bootstrap | bash
+```sh
+sh <(curl -L https://raw.githubusercontent.com/biosan/dotfiles/master/bootstrap.sh)
 ```
 
-It will install XCode Command Line Tools, [Homebrew](https://homebrew.sh), [mas](https://github.com/mas-cli/mas), and then clone this repository into `~/.dotfiles`
+> **NOTE:**
+> 
+> The script will install my Macbook configuration by default.
+> To modify it download it first then edit the first lines, then execute it.
+
+This script will:
+
+1. Install Nix
+1. Install home-manager
+1. Clone this repo inside `~/.config/nixpkgs`
+1. Setup home-manager configuration (install and configure programs)
+1. If on macOS:
+    1. Install Homebrew
+    1. Install apps from Homebrew
+    1. Setup some macOS-specific configuration
 
 
-### Step 2
+### Post installation steps
 
-Edit your preferences in `~/.dotfiles/_macos/vars.sh`
-
-
-### Step 3
-
-Run this command to stow your dotfiles, install your core and extra apps and to apply your settings
-
-```
-~/.dotfiles/configure
-```
-
-### Step 4
-
-Complete all the other steps inside [MANUAL_SETTINGS.md](./MANUAL_SETTINGS.md) to complete the setup of your machine
+1. Clone `pass` repository using SSH
 
 
-### Done!
+#### macOS
 
-## Linkts to Checkout
+1. Install profile files for mail, DNS, VPN, etc.
+1. Login into
+    - BitWarden
+    - Firefox Sync
+    - Dropbox
+    - Todoist
+    - OmniFocus
+1. Enable Night Shift
+1. Verify Alfred license
+1. Organize menu bar items with Dozer
 
-- https://github.com/nicolashery/mac-dev-setup
-- https://github.com/rgcr/m-cli
-- https://github.com/alichtman/stronghold
-- https://github.com/rstacruz/vim-coc-settings/blob/master/init.vim
-- https://blog.jessfraz.com/post/docker-containers-on-the-desktop/
-- https://www.reddit.com/r/ipad/comments/a7med8/my_daily_dev_setup_nowadays_hesitated_long_to/
-- Improve RClone Sync https://rclone.org/filtering/
-- https://github.com/sbernheim4/dotfiles/blob/master/.tmux.conf
-- Look for cool programs here: https://github.com/davidchall/homebrew-hep
-- Add Neovim latest release from GitHub to Homebrew Formula https://github.com/Homebrew/homebrew-core/blob/master/Formula/neovim.rb
-- Configure CoC plugins correctly:
-    - https://www.npmjs.com/package/coc-java
-    - https://www.npmjs.com/package/coc-fs-lists
-    - https://www.npmjs.com/package/coc-git
-    - https://www.npmjs.com/package/coc-yank
-    - https://github.com/neoclide/coc-snippets
-    - https://github.com/neoclide/coc-python
-- Firefox Color Scheme https://github.com/serverwentdown/matched (maybe replicate it)
-- Awesome setup https://www.reddit.com/r/unixporn/comments/cv7h3w/chunkwm_oc_matched_firefox_with_iterm2_and_a (from the same guy of the above Firefox Theme)
-- Full development environment inside Docker (with dotfiles) https://github.com/serverwentdown/env (agai from the same awesome guy as above)
-- Add [Tmuxinator](https://github.com/tmuxinator/tmuxinator)
-- Check it out http://paulrouget.com/e/myconf
-- Make a list of cheatsheets to store inside dotfiles
-    - https://tmuxcheatsheet.com/
-- Checkout i3bar
-- https://github.com/jwilm/alacritty/wiki/Color-schemes
-- https://github.com/trevordmiller/nova-colors
-- Cool & Funny CLI "animal" https://github.com/p-e-w/ternimal
-- https://www.reddit.com/r/unixporn/comments/cwlk8i/i3gaps_a_blurry_rice/ (Nova Font! Awesome)
-- https://www.iamcal.com/misc/fonts/
-- https://www.urbanfonts.com/fonts/superscript.htm
+
+
+## ToDo
+
+### General
+
+- [ ] `pass` repo initial setup
+- [ ] Homebrew token in private `.envrc` file
+- [ ] Auto install profiles for mail, dns, vpn, etc. with `profiles -I -F "<PATH>"`
+- [ ] Enable *Night Shift*
+- [ ] Trust GPG keys
+- [ ] Enable snap-to-grid for icons on the desktop and in other icon views
+- [ ] Configure Dozer
+- [ ] Configure Amethyst
+
+### Things to setup declaratevely with Nix/Home-Manager
+
+- [ ] Import and trust GPG keys
+- [ ] Clone `pass` repo
+- [ ] macOS configuration/settings/profiles (using [nix-darwin](https://github.com/LnL7/nix-darwin))
+- [ ] Maybe use [flakes](https://nixos.wiki/wiki/Flakes) to improve reproducibility
+- [ ] Complete system-in-a-container (even a VM will be fine) with full NixOS
+
