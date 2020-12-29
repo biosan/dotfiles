@@ -1,10 +1,5 @@
 #!/usr/bin/env sh
 
-HOSTNAME="biosanMBPr"
-GPG_KEY_FINGERPRINT=""
-PASS_GIT_URL=""
-ALFRED_PREF_FOLDER=""
-
 #######################################################
 ## This is a configuration script.                   ##
 ## Make attention! It can mess your macOS installion ##
@@ -21,9 +16,6 @@ read TEMP
 #############
 ## Generic ##
 #############
-
-# Set hostname
-m hostname "$HOSTNAME"
 
 # Disable boot sound effects
 #nvram SystemAudioVolume=" "
@@ -131,54 +123,6 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
-
-###############
-## CLI Tools ##
-###############
-
-### GPG ###
-# Import my GPG public key from Keybase
-# NOTE: old "less secure" method: gpg --recv-keys "$GPG_KEY_FINGERPRINT"
-curl https://keybase.io/biosan/key.asc | gpg --import
-# Import my GPG key stubs from the smartcard
-echo "Importing private key stubs from the smartcard"
-echo "Insert the smartcard. Press any key to continue... (Ctrl-C to cancel)"
-read TMP
-gpg --card-status
-# Set your key as ultemately trusted
-#gpg --import-ownertrust <(echo "$GPG_KEY_FINGERPRINT:6:")
-export SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh # Temporary export to clone Pass repo
-
-### Pass ###
-# Clone my password store repository
-echo "Setting up your password store repository"
-if [ -d ~/.password-store ]; then
-    echo "A .password-store folder is already inside your home directory"
-else
-    echo "Cloning repository using SSH"
-    echo "Insert the smartcard. Press any key to continue... (Ctrl-C to cancel)"
-    read TMP
-    git clone "$PASS_GIT_URL" ~/.password-store
-fi
-
-
-##########
-## Apps ##
-##########
-
-### Karabiner/Karabiner-Elements
-# Restart Karabiner-Elements to load new configuration file
-launchctl kickstart -k "gui/$(id -u)/org.pqrs.karabiner.karabiner_console_user_server"
-
-### Dropbox
-# Link notes stored in Dropbox to my home folder
-ln -sf ~/Dropbox/Notes ~/Notes
-ln -sf ~/Dropbox/Uni ~/Uni
-
-### Alfred2
-# Set Alfred sync folder
-defaults write com.runningwithcrayons.Alfred-Preferences syncfolder -string "$ALFRED_PREF_FOLDER"
 
 
 #############
