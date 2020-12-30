@@ -473,6 +473,9 @@ in
     type = sftp
     host = 192.168.1.122
     use_insecure_cipher = false
+    user = root
+    md5sum_command = md5sum
+    sha1sum_command = sha1sum
   '';
 
 
