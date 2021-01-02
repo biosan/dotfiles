@@ -108,6 +108,9 @@ defaults write com.apple.dock tilesize -int 42
 # Change dock position to left
 m dock position LEFT
 
+# Remove all items from Dock
+m dock prune
+
 
 ###################
 ## Built-in Apps ##
