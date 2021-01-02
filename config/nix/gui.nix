@@ -36,11 +36,11 @@ in
       draw_bold_text_with_bright_colors = true;
       font = {
         normal = {
-          family = "FuraCode Nerd Font";
+          family = "FiraCode Nerd Font";
           #style = "Retina";
         };
         bold = {
-          family = "FuraCode Nerd Font";
+          family = "FiraCode Nerd Font";
           style = "Bold";
         };
         italic = {
