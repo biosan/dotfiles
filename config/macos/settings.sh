@@ -46,7 +46,7 @@ defaults write com.apple.dock wvous-br-corner -int 12
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
+#defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 ### Network ###
 
@@ -59,15 +59,15 @@ m firewall enable
 ##############
 
 # Show battery percentage
-defaults write com.apple.menuextra.battery ShowPercent -bool true
+#defaults write com.apple.menuextra.battery ShowPercent -bool true
 
 # Show full clock
-defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM  HH:mm:ss'
-defaults write com.apple.menuextra.clock IsAnalog -bool false
-defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+#defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM  HH:mm:ss'
+#defaults write com.apple.menuextra.clock IsAnalog -bool false
+#defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 
 # MenuBar items
-defaults write com.apple.menuextra.textinput ModeNameVisible -bool false
+#defaults write com.apple.menuextra.textinput ModeNameVisible -bool false
 
 
 ############
@@ -75,24 +75,24 @@ defaults write com.apple.menuextra.textinput ModeNameVisible -bool false
 ############
 
 # Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Expand print panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSavePrint -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSavePrint2 -bool true
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSavePrint -bool true
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSavePrint2 -bool true
 
 # Show all filename extensions
 m finder showextensions YES
 
 # Avoid creating .DS_Store files on network volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+#defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Show path bar
 m finder showpath YES
 
 # Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+#defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 
 ##########
