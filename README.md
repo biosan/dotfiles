@@ -92,6 +92,7 @@ Most of the settings and programs are managed with [home-manager](https://github
     - Dropbox
     - Todoist
     - OmniFocus
+    - Reeder (NewsBlur account)
     - VSCode
     - IntelliJ and WebStorm
 1. Enable Night Shift
@@ -103,6 +104,7 @@ Most of the settings and programs are managed with [home-manager](https://github
     - Alfred
     - Dozer
 1. Setup Firefox:
+    - Login into Pocket
     - Set history cleaner to 7 days
     - Add container tabs for Google, Work, and AdA
     - Enable compact style
