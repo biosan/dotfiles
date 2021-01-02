@@ -19,7 +19,7 @@ Most of the settings and programs are managed with [home-manager](https://github
     xcode-select --install
     ```
 
-1. Install Nix
+1. Install Nix (a reboot could be necessary)
     ```
     sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
     ```
@@ -34,11 +34,13 @@ Most of the settings and programs are managed with [home-manager](https://github
     ```
     nix-shell '<home-manager>' -A install
     ```
-1. Clone this repo inside `~/.config/nixpkgs`
+1. Clone this repo inside `~/.config/nixpkgs` (must remove default nixpkgs before cloning)
     ```
+    rm -r ~/.config/nixpkgs
     git clone https://github.com/biosan/dotfiles ~/.config/nixpkgs
     ```
 1. Setup home-manager configuration (install and configure programs)
+    *NOTE: Takes a loooong time*
     ```
     home-manager switch
     ```
@@ -48,12 +50,15 @@ Most of the settings and programs are managed with [home-manager](https://github
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
 1. Install apps from Homebrew
+    > NOTEs:
+    >   - Takes a **loooong** time
+    >   - **Will ask for password a lot of times...**
     ```
-    brew bundle --file ~/.config/nixpkgs/config/macos
+    brew bundle --verbose --file ~/.config/nixpkgs/config/macos/Brewfile
     ```
 1. Setup some macOS-specific configuration
     ```
-    sh "~/.config/nixpkgs/config/macos/settings.sh"
+    sh ~/.config/nixpkgs/config/macos/settings.sh
     ```
 
 
@@ -87,9 +92,24 @@ Most of the settings and programs are managed with [home-manager](https://github
     - Dropbox
     - Todoist
     - OmniFocus
+    - VSCode
+    - IntelliJ and WebStorm
 1. Enable Night Shift
 1. Insert Alfred license
 1. Organize menu bar items with Dozer
+1. [Download](https://store.serif.com/en-gb/account/downloads/) (login needed), install and register Affinity Photo
+1. Stuff to start at login:
+    - Dropbox
+    - Alfred
+    - Dozer
+1. Setup Firefox:
+    - Set history cleaner to 7 days
+    - Add container tabs for Google, Work, and AdA
+    - Enable compact style
+    - Move every add-on icon to Overflow Menu except except for BitWarden
+        *NOTE: Firefox "native" icons stays at default position (this stuff is synced)*
+1. Enable Time Machine automatic backups (encrypted disk!) and enable *"Show Time Machine in menu bar"* option
+1. Add *"U.S. International - PC"* to keyboard layouts and enable *"Show Input menu in menu bar"* option
 
 
 
