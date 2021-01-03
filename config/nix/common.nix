@@ -22,6 +22,7 @@ in
   home.homeDirectory = "/Users/biosan";
 
   home.sessionVariables = {
+    NIX_PATH = "$HOME/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:/nix/var/nix/profiles/per-user/root/channels";
     SSH_AUTH_SOCK = "$HOME/.gnupg/S.gpg-agent.ssh";
     PATH = "$HOME/bin:$HOME/.cargo/bin:$HOME/.go/bin:$HOME/.dotfiles/deps/npm/node_modules/.bin:$HOME/.nix-profile/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/Applications/Wireshark.app/Contents/MacOS";
   };
@@ -169,6 +170,13 @@ in
       go = "checkout";
       d = "difftool";
       ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi";
+      unstage = "reset HEAD --";
+      uncommit = "reset --soft HEAD~1";
+      recommit = "commit --amend --no-edit";
+      amend = "commit --amend";
+      get = "pull origin master";
+      save = "!git add . && git commit --no-verify -m \"WIP: auto save at $(date '+%Y%m%d %H:%M:%S')\"";
+      mine = "log --author='biosan'";
     };
     delta = {
       enable = true;
@@ -178,6 +186,12 @@ in
     };
     extraConfig = {
       github.user = "biosan";
+      url."git@github.com:biosan/" = {
+        insteadOf = [
+          "me:"
+          "https://github.com/biosan/"
+        ];
+      };
       url."git@bitbucket.org:" = {
         insteadOf = "https://bitbucket.org/";
       };
