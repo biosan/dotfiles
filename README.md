@@ -112,6 +112,10 @@ Most of the settings and programs are managed with [home-manager](https://github
         *NOTE: Firefox "native" icons stays at default position (this stuff is synced)*
 1. Enable Time Machine automatic backups (encrypted disk!) and enable *"Show Time Machine in menu bar"* option
 1. Add *"U.S. International - PC"* to keyboard layouts and enable *"Show Input menu in menu bar"* option
+1. Setup [Amethyst](https://github.com/ianyh/Amethyst)
+   - Enable *Window Margins* and set it to 5px
+   - Set *Screen Padding* to 5px (top, left, bottom, right)
+   - Enable *Swap windows using mouse* and *Resize windows using mouse* (mouse tab)
 
 
 
