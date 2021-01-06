@@ -116,6 +116,7 @@ Most of the settings and programs are managed with [home-manager](https://github
    - Enable *Window Margins* and set it to 5px
    - Set *Screen Padding* to 5px (top, left, bottom, right)
    - Enable *Swap windows using mouse* and *Resize windows using mouse* (mouse tab)
+1. Right-click on desktop and enable "Stacks"
 
 
 
