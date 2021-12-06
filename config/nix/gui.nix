@@ -17,6 +17,7 @@ in
     # Editors and IDEs
     # jetbrains.idea-community
     # vscode
+    # pkgsUnstable.obsidian
   ];
 
   programs.alacritty = {

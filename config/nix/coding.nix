@@ -46,13 +46,16 @@ in
     kubetail
     tokei
     nodePackages.lerna
+    step-cli # Swiss army knife for x509, CAs, JWT, OAuth, etc.
 
     # Editors and IDEs
-    # jetbrains.idea-community
-    # vscode
+    # TODO: LunarVim...
 
     # LanguageServers, Formatters and Linters
     shellcheck
     vale
+
+    # DBs & Co.
+    sqlite
   ];
 }

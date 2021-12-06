@@ -1,0 +1,15 @@
+unstage = reset HEAD --
+uncommit = reset --soft HEAD~1
+recommit = commit --amend --no-edit
+amend = commit --amend
+get = pull origin master
+save  = !git add . && git commit --no-verify -m \"WIP: auto save at $(date '+%Y%m%d %H:%M:%S')\"
+mine = git log --author="biosan"
+
+
+Not alias but this is really handy:
+
+[url "git@github.com:adarosecannon/"]
+    insteadOf = me:
+
+Because then I can do, `git clone me:some-repo`

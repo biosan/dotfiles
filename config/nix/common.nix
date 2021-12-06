@@ -43,6 +43,10 @@ in
     pv
     watch
     tree
+    coreutils
+    b2sum
+    b3sum
+    xxHash
 
     # Programming languages
     nodejs-12_x
@@ -89,8 +93,10 @@ in
     # System and network tools
     aria2
     bandwhich
+    grpcurl
     htop
-    httpie
+    httpie # Maybe switch to this Rust alternative `pkgsUnstable.ht-rust`
+    iperf
     netcat
     nmap
     prettyping

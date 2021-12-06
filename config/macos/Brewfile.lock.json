@@ -1,0 +1,380 @@
+{
+  "entries": {
+    "brew": {
+      "m-cli": {
+        "version": "0.2.5",
+        "bottle": false
+      },
+      "svn": null
+    },
+    "cask": {
+      "alfred": {
+        "version": "4.3,1205",
+        "options": {
+          "full_name": "alfred"
+        }
+      },
+      "amethyst": {
+        "version": "0.15.4",
+        "options": {
+          "full_name": "amethyst"
+        }
+      },
+      "bitwarden": {
+        "version": "1.23.1",
+        "options": {
+          "full_name": "bitwarden"
+        }
+      },
+      "chromium": {
+        "version": "839551",
+        "options": {
+          "full_name": "chromium"
+        }
+      },
+      "docker": {
+        "version": "3.0.3,51017",
+        "options": {
+          "full_name": "docker"
+        }
+      },
+      "dozer": {
+        "version": "4.0.0",
+        "options": {
+          "full_name": "dozer"
+        }
+      },
+      "dropbox": {
+        "version": "112.4.321",
+        "options": {
+          "full_name": "dropbox"
+        }
+      },
+      "firefox": {
+        "version": "84.0.1",
+        "options": {
+          "full_name": "firefox"
+        }
+      },
+      "gitup": {
+        "version": "1.1.3,1036",
+        "options": {
+          "full_name": "gitup"
+        }
+      },
+      "handbrake": {
+        "version": "1.3.3",
+        "options": {
+          "full_name": "handbrake"
+        }
+      },
+      "iina": {
+        "version": "1.1.2,128",
+        "options": {
+          "full_name": "iina"
+        }
+      },
+      "imageoptim": {
+        "version": "1.8.8",
+        "options": {
+          "full_name": "imageoptim"
+        }
+      },
+      "imazing-mini": {
+        "version": "2.8.1,9825:1542056055",
+        "options": {
+          "full_name": "imazing-mini"
+        }
+      },
+      "intellij-idea-ce": {
+        "version": "2020.3.1,203.6682.168",
+        "options": {
+          "full_name": "intellij-idea-ce"
+        }
+      },
+      "karabiner-elements": {
+        "version": "13.1.0",
+        "options": {
+          "full_name": "karabiner-elements"
+        }
+      },
+      "keka": {
+        "version": "1.2.6",
+        "options": {
+          "full_name": "keka"
+        }
+      },
+      "logitech-options": {
+        "version": "8.36.76",
+        "options": {
+          "full_name": "homebrew/cask-drivers/logitech-options"
+        }
+      },
+      "macdown": {
+        "version": "0.7.2",
+        "options": {
+          "full_name": "macdown"
+        }
+      },
+      "omnifocus": {
+        "version": "3.11.1",
+        "options": {
+          "full_name": "omnifocus"
+        }
+      },
+      "openemu": {
+        "version": "2.3",
+        "options": {
+          "full_name": "openemu"
+        }
+      },
+      "pycharm": {
+        "version": "2020.3.2,203.6682.179",
+        "options": {
+          "full_name": "pycharm"
+        }
+      },
+      "qmk-toolbox": {
+        "version": "0.0.20",
+        "options": {
+          "full_name": "homebrew/cask-drivers/qmk-toolbox"
+        }
+      },
+      "signal": {
+        "version": "1.39.4",
+        "options": {
+          "full_name": "signal"
+        }
+      },
+      "visual-studio-code": {
+        "version": "1.52.1",
+        "options": {
+          "full_name": "visual-studio-code"
+        }
+      },
+      "webstorm": {
+        "version": "2020.3.1,203.6682.155",
+        "options": {
+          "full_name": "webstorm"
+        }
+      },
+      "zerotier-one": {
+        "version": "1.0,15",
+        "options": {
+          "full_name": "zerotier-one"
+        }
+      },
+      "font-abril-fatface": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-abril-fatface"
+        }
+      },
+      "font-comfortaa": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-comfortaa"
+        }
+      },
+      "font-computer-modern": {
+        "version": "0.7.0",
+        "options": {
+          "full_name": "font-computer-modern"
+        }
+      },
+      "font-dosis": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-dosis"
+        }
+      },
+      "font-fira-code": {
+        "version": "5.2",
+        "options": {
+          "full_name": "font-fira-code"
+        }
+      },
+      "font-fira-code-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-fira-code-nerd-font"
+        }
+      },
+      "font-gabriela": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-gabriela"
+        }
+      },
+      "font-hack": {
+        "version": "3.003",
+        "options": {
+          "full_name": "font-hack"
+        }
+      },
+      "font-hack-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-hack-nerd-font"
+        }
+      },
+      "font-ibm-plex": {
+        "version": "5.1.3",
+        "options": {
+          "full_name": "font-ibm-plex"
+        }
+      },
+      "font-josefin-sans": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-josefin-sans"
+        }
+      },
+      "font-lobster": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-lobster"
+        }
+      },
+      "font-lobster-two": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-lobster-two"
+        }
+      },
+      "font-montserrat": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-montserrat"
+        }
+      },
+      "font-oranienbaum": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-oranienbaum"
+        }
+      },
+      "font-playfair-display": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-playfair-display"
+        }
+      },
+      "font-playfair-display-sc": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-playfair-display-sc"
+        }
+      },
+      "font-profontx": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-profontx"
+        }
+      },
+      "font-raleway": {
+        "version": "4.101",
+        "options": {
+          "full_name": "font-raleway"
+        }
+      },
+      "font-ribeye-marrow": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-ribeye-marrow"
+        }
+      },
+      "font-rochester": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-rochester"
+        }
+      },
+      "font-sacramento": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-sacramento"
+        }
+      },
+      "font-terminus": {
+        "version": "4.40.1",
+        "options": {
+          "full_name": "font-terminus"
+        }
+      },
+      "font-vidaloka": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-vidaloka"
+        }
+      },
+      "font-work-sans": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-work-sans"
+        }
+      },
+      "font-fantasque-sans-mono-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-fantasque-sans-mono-nerd-font"
+        }
+      }
+    },
+    "mas": {
+      "GoodNotes": {
+        "id": "1444383602",
+        "version": "5.6.30"
+      },
+      "Affinity Designer": {
+        "id": "824171161",
+        "version": "1.8.6"
+      },
+      "SafariMarkdownLinker": {
+        "id": "1289119450",
+        "version": "1.0"
+      },
+      "WireGuard": {
+        "id": "1451685025",
+        "version": "1.0.12"
+      },
+      "Pocket": {
+        "id": "568494494",
+        "version": "1.8.6"
+      },
+      "Todoist": {
+        "id": "585829637",
+        "version": "7.5"
+      },
+      "Reeder": {
+        "id": "880001334",
+        "version": "3.2.3"
+      },
+      "Amphetamine": {
+        "id": "937984704",
+        "version": "5.1.1"
+      },
+      "Tailscale": {
+        "id": "1475387142",
+        "version": "1.2.4"
+      }
+    },
+    "tap": {
+      "homebrew/cask-fonts": {
+        "revision": "9aa9d8c72b9a9d6d8f7969a5eeedc03cba4c230f"
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "big_sur": {
+        "HOMEBREW_VERSION": "2.7.1",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "006d4f001a5d3c37770ec831d0b3dea7a8552180",
+        "CLT": "12.3.0.0.1.1607026830",
+        "Xcode": "12.0",
+        "macOS": "11.1"
+      }
+    }
+  }
+}
