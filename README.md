@@ -1,7 +1,7 @@
 
 # One config to rule them all 💍👨‍💻🔥
 
-This repo contains my dotfiles, all the config files, scripts, and instructions to setup a new machine.
+This repo contains my dotfiles, all the config files, scripts, and instructions to setup a new Mac.
 
 Most of the settings and programs are managed with [home-manager](https://github.com/nix-community/home-manager).
 
@@ -64,22 +64,10 @@ Most of the settings and programs are managed with [home-manager](https://github
 
 ### Post installation steps
 
-1. Import GPG public keys
-    ```
-    curl https://keybase.io/biosan/key.asc | gpg --import
-    ```
-1. Insert YubiKey and import GPG secret key stubs
-    ```
-    gpg --card-status
-    ```
 1. Change dotfiles remote from HTTPS to SSH
     ```
     cd ~/.config/nixpkgs
     git remote set-url origin git@github.com:biosan/dotfiles.git
-    ```
-1. Clone `pass` repository using SSH
-    ```
-    git clone <REPO_URL> ${PASSWORD_STORE_DIR}
     ```
 
 
@@ -89,20 +77,15 @@ Most of the settings and programs are managed with [home-manager](https://github
 1. Login into
     - BitWarden
     - Firefox Sync
-    - Dropbox
     - Todoist
     - OmniFocus
-    - Reeder (NewsBlur account)
     - VSCode
-    - IntelliJ and WebStorm
+    - JetBrains Toolbox
 1. Enable Night Shift
-1. Insert Alfred license
-1. Organize menu bar items with Dozer
 1. [Download](https://store.serif.com/en-gb/account/downloads/) (login needed), install and register Affinity Photo
 1. Stuff to start at login:
-    - Dropbox
-    - Alfred
-    - Dozer
+    - Amethyst
+    - Karabiner
 1. Setup Firefox:
     - Login into Pocket
     - Set history cleaner to 7 days
@@ -124,20 +107,17 @@ Most of the settings and programs are managed with [home-manager](https://github
 
 ### General
 
-- [ ] `pass` repo initial setup
 - [ ] Homebrew token in private `.envrc` file
 - [ ] Auto install profiles for mail, dns, vpn, etc. with `profiles -I -F "<PATH>"`
 - [ ] Enable *Night Shift*
-- [ ] Import and trust GPG keys
 - [ ] Enable snap-to-grid for icons on the desktop and in other icon views
 - [ ] Configure Dozer
 - [ ] Configure Amethyst
+- [ ] Configure Karabiner
 
 ### Things to setup declaratevely with Nix/Home-Manager
 
-- [ ] macOS configuration/settings/profiles (using [nix-darwin](https://github.com/LnL7/nix-darwin))
+- [ ] macOS configuration/settings/profiles (using [nix-darwin](https://github.com/LnL7/nix-darwin)) (maybe it's not worth it for something to do only when a I get a new Mac...)
 - [ ] Switch to [flakes](https://nixos.wiki/wiki/Flakes) to improve reproducibility and UX
 - [ ] Complete system-in-a-container (even a VM will be fine) with full NixOS (ISO, cloud image, docker container)
-- [ ] Import and trust GPG keys
-- [ ] Clone `pass` repo
-
+- [ ] Handle secrets the right way

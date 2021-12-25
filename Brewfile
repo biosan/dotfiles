@@ -1,47 +1,39 @@
-
 # Basic stuff not available on Nix
 brew "m-cli"
 
 # Casks (mostly big GUI apps)
-cask "alfred"
 cask "amethyst"
-cask "bitwarden"
 cask "chromium"
 cask "docker"
 cask "dozer"
-cask "dropbox"
 cask "firefox"
-cask "gitup"
 cask "handbrake"
 cask "iina"
 cask "imageoptim"
 cask "imazing-mini"
-cask "intellij-idea-ce"
+cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "keka"
-#cask "kicad"
-cask "homebrew/cask-drivers/logitech-options"
 cask "macdown"
 cask "omnifocus"
 cask "openemu"
-cask "pycharm"
 cask "homebrew/cask-drivers/qmk-toolbox"
 cask "signal"
-#cask "virtualbox" # As of 2020-12-31 installation fails
 cask "visual-studio-code"
-cask "webstorm"
-cask "zerotier-one"
 
 # Mac App Store stuff (mostly big GUI apps)
-mas "GoodNotes", id: 1444383602
 mas "Affinity Designer", id: 824171161
-mas "SafariMarkdownLinker", id: 1289119450
-mas "WireGuard", id: 1451685025
-mas "Pocket", id: 568494494
-mas "Todoist", id: 585829637
-mas "Reeder", id: 880001334
 mas "Amphetamine", id: 937984704
+mas "Bitwarden", id: 1352778147
+mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "GoodNotes", id: 1444383602
+mas "OneTab", id: 1540160809
+mas "SafariMarkdownLinker", id: 1289119450
+mas "Save to Raindrop.io", id: 1549370672
 mas "Tailscale", id: 1475387142
+mas "Todoist", id: 585829637
+#mas "Vimari", id: 1480933944
+mas "WireGuard", id: 1451685025
 
 # Install fonts
 tap "homebrew/cask-fonts"
@@ -79,4 +71,3 @@ cask "font-terminus"
 #cask "font-terminus-nerd-font-mono"
 cask "font-vidaloka"
 cask "font-work-sans"
-
